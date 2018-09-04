@@ -5,4 +5,4 @@ This program do that convert Pdf file to Image and scan all text on the image us
 Then find TCKN (Identity number of Republic of Turkey) using a specified algorithm.
 Finally,Pdf files names are changed with TCKN.
 
-As a programa input, a folder with at least 4 PDFs should be given.
+As a program input, a folder with at least 4 PDFs should be given.
