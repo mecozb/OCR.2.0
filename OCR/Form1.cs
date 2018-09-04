@@ -55,8 +55,8 @@ namespace OCR
 
         static void select_Thread_Folder(string PDF_FilesDirPath, string ParentDirPath)
         {
-            string saveDirPath = ParentDirPath + "\\TCKN'li_PDF'ler"; 
-            string saveImageDirPath = ParentDirPath + "\\PdfImages"; 
+            string saveDirPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\TCKN'li_PDF'ler";
+            string saveImageDirPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\PdfImages";
             Directory.CreateDirectory(saveDirPath);
             Directory.CreateDirectory(saveImageDirPath);
             DirectoryInfo inf = new DirectoryInfo(saveImageDirPath);
@@ -153,8 +153,9 @@ namespace OCR
             {
                 DirectoryInfo info = new DirectoryInfo(mainFolder);
 
-                string saveDirPath = info.Parent.FullName + "\\TCKN'li_PDF'ler";
-                string saveImageDirPath = info.Parent.FullName + "\\PdfImages";
+               // string path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                string saveDirPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\TCKN'li_PDF'ler";
+                string saveImageDirPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\PdfImages";
                 DirectoryInfo dir = new DirectoryInfo(dirPath);
                 FileInfo[] pdf_Files = dir.GetFiles();
             
@@ -170,9 +171,10 @@ namespace OCR
             }
             catch (Exception ex)
             {
+                 
+                re_MoveFiles(dirPath, mainFolder);
+                if (count == 3) { MessageBox.Show("Error: " + ex); Application.Restart(); } 
                 count++;
-                if(count == 4){ MessageBox.Show("Error: " + ex); re_MoveFiles(dirPath, mainFolder); Application.Restart(); }
-                
                 
             }
 
