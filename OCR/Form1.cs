@@ -17,8 +17,9 @@ namespace OCR
     public partial class Form1 : Form
     {
         public Form1()
-        {
+        {            
             InitializeComponent();
+            this.Text = "TCKN Parser";
             progressBar1.Visible = false;
             progressBar1.Style = ProgressBarStyle.Marquee;
             progressBar1.MarqueeAnimationSpeed = 0;
