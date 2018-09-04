@@ -55,8 +55,8 @@ namespace OCR
 
         static void select_Thread_Folder(string PDF_FilesDirPath, string ParentDirPath)
         {
-            string saveDirPath = ParentDirPath + "\\TCKN'li_PDF'ler"; /*"C:/Users/Emir/Desktop/TCKN'li_PDF'ler";*/
-            string saveImageDirPath = ParentDirPath + "\\PdfImages"; /*"C:/Users/Emir/Desktop/PdfImages";*/
+            string saveDirPath = ParentDirPath + "\\TCKN'li_PDF'ler"; 
+            string saveImageDirPath = ParentDirPath + "\\PdfImages"; 
             Directory.CreateDirectory(saveDirPath);
             Directory.CreateDirectory(saveImageDirPath);
             DirectoryInfo inf = new DirectoryInfo(saveImageDirPath);
@@ -160,11 +160,9 @@ namespace OCR
             
                 foreach (FileInfo file in pdf_Files)
                 {
-                    //fi.Name bize dosyanın adını dönüyor.
-                    //fi.FullName ise bize dosyasının dizin bilgisini döner.
-                    Rename_Pdf(file.FullName, saveDirPath, file.Name, saveImageDirPath);
-
-
+                    if(file.Extension == ".PDF" || file.Extension == ".pdf" )
+                    { Rename_Pdf(file.FullName, saveDirPath, file.Name, saveImageDirPath); }
+                                       
                 }
                 count++;
                 re_MoveFiles(dirPath, mainFolder);
