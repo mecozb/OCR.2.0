@@ -204,7 +204,7 @@ namespace OCR
                     for (int i = 1; i < txtArray.Length; i++)
                     {
                         if (
-                            (txtArray[(i - 1)] != '1' && txtArray[(i - 1)] != '2' && txtArray[(i - 1)] != '3' && txtArray[(i - 1)] != '4' && txtArray[(i - 1)] != '5' && txtArray[(i - 1)] != '6' && txtArray[(i - 1)] != '7' && txtArray[(i - 1)] != '8' && txtArray[(i - 1)] != '9')
+                            (txtArray[(i - 1)] != '0' && txtArray[(i - 1)] != '1' && txtArray[(i - 1)] != '2' && txtArray[(i - 1)] != '3' && txtArray[(i - 1)] != '4' && txtArray[(i - 1)] != '5' && txtArray[(i - 1)] != '6' && txtArray[(i - 1)] != '7' && txtArray[(i - 1)] != '8' && txtArray[(i - 1)] != '9')
 
                             && (txtArray[i] == '1' || txtArray[i] == '2' || txtArray[i] == '3' || txtArray[i] == '4' || txtArray[i] == '5' || txtArray[i] == '6' || txtArray[i] == '7' || txtArray[i] == '8' || txtArray[i] == '9')
 
