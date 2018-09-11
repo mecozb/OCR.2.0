@@ -39,8 +39,7 @@ namespace OCR
                 PDF_FilesDirPath = dlg.SelectedPath.ToString();
                 DirectoryInfo dir = new DirectoryInfo(PDF_FilesDirPath);
                 try
-                {
-                    
+                {                   
                     select_Thread_Folder(PDF_FilesDirPath, dir.Parent.FullName);
                 }
 
@@ -65,7 +64,21 @@ namespace OCR
             DirectoryInfo dir = new DirectoryInfo(PDF_FilesDirPath);
             FileInfo[] pdf_Files = dir.GetFiles();
             int filesCount = (pdf_Files.Length );
-            moveFiles(PDF_FilesDirPath, filesCount);
+            if(filesCount < 4)
+            {
+                foreach (FileInfo file in pdf_Files)
+                {
+                    if (file.Extension == ".PDF" || file.Extension == ".pdf")
+                    { Rename_Pdf(file.FullName, saveDirPath, file.Name, saveImageDirPath); }
+
+                }
+                Directory.Delete(saveImageDirPath, true); MessageBox.Show("İşlem Başarılı..."); Application.Restart();
+            }
+            else
+            {
+                moveFiles(PDF_FilesDirPath, filesCount);
+            }
+            
         }
 
         static void startThreading(string saveDirPath1, string saveDirPath2, string saveDirPath3, string saveDirPath4,/* string saveDirPath5, string saveDirPath6,*//* string saveDirPath7, string saveDirPath8,*/ string mainFolder) // mainFolder = pdf files dir path
@@ -204,7 +217,7 @@ namespace OCR
                     for (int i = 1; i < txtArray.Length; i++)
                     {
                         if (
-                            (txtArray[(i - 1)] != '0' && txtArray[(i - 1)] != '1' && txtArray[(i - 1)] != '2' && txtArray[(i - 1)] != '3' && txtArray[(i - 1)] != '4' && txtArray[(i - 1)] != '5' && txtArray[(i - 1)] != '6' && txtArray[(i - 1)] != '7' && txtArray[(i - 1)] != '8' && txtArray[(i - 1)] != '9')
+                            ( txtArray[(i - 1)] != '0' && txtArray[(i - 1)] != '1' && txtArray[(i - 1)] != '2' && txtArray[(i - 1)] != '3' && txtArray[(i - 1)] != '4' && txtArray[(i - 1)] != '5' && txtArray[(i - 1)] != '6' && txtArray[(i - 1)] != '7' && txtArray[(i - 1)] != '8' && txtArray[(i - 1)] != '9')
 
                             && (txtArray[i] == '1' || txtArray[i] == '2' || txtArray[i] == '3' || txtArray[i] == '4' || txtArray[i] == '5' || txtArray[i] == '6' || txtArray[i] == '7' || txtArray[i] == '8' || txtArray[i] == '9')
 
